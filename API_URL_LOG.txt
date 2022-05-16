@@ -1,0 +1,237 @@
+# LINK API localhost : (trước tiên chạy npm run api trên Terminal) - localhost:3000/...
+# LINK API heroku : https://api-cookingrecipe.herokuapp.com/...
+
+// API for User........................................................................
+
++ Đăng kí :
+
+[POST] localhost:3000/DangKy
+
+Truyền vào JSON thông tin User cần đăng kí.Ví dụ :
+
+{
+    "UserName": "admin_host",
+    "HoTen": "ADMIN PRIMARY",
+    "MatKhau": "12345"
+}
+
+==> Khi kiểm tra lại CSDL, dữ liệu User được thêm vào ban đầu sẽ có các trường về Ảnh đại diện,
+Email, Địa chỉ, SĐT sẽ trống (người dùng sẽ cập nhật những thông tin này sau) và chức vụ luôn mặc
+định là Client (trừ khi admin nâng cấp User này).Username đã tồn tại can't Đăng kí...
+
++ Đăng nhập :
+
+[POST] localhost:3000/DangNhap
+
+Truyền vào JSON thông tin User cần đăng nhập.Ví dụ :
+
+{
+    "UserName": "admin_host",
+    "MatKhau": "12345"
+}
+
++ Cập nhật :
+
+==> Ví dụ cập nhật thông tin cho username là admin_host (vừa đăng kí ở trên), bây giờ ta sẽ cập nhật
+các thông tin như Email, SĐT, Địa chỉ hiện đang trống cho User này :
+
+[PUT] localhost:3000/CapNhatUser/admin_host
+
+Truyền vào JSON thông tin User cần cập nhật.Ví dụ :
+
+{
+    "HoTen": "ADMIN",
+    "MatKhau": "12345",
+    "Email": "admin@host.com",
+    "Anh" : "[Empty]",
+    "DiaChi": "32/5 duong Hoang Linh An quan 18",
+    "SDT": "0987654321"
+}
+
+JSON ở trên cho biết username admin_host đã cập nhật : HoTen từ ADMIN PRIMARY thành ADMIN, Email
+thành admin@host.com, Anh thanh [Empty], DiaChi thành 32/5 duong Hoang Linh An quan 18, SDT
+thành 0987654321 -- VÀ -- MatKhau vẫn giữ nguyên 12345 và Username hay ChucVu không thể change!
+
++ Lấy thông tin tài khoản User nào đó :
+
+==> Ví dụ cần xem các thông tin liên quan đến người dùng có username là admin_host :
+
+[GET] localhost:3000/User/admin_host
+
+
+// API for LoaiMonAn........................................................................
+
+
++ Lấy danh sách các loại món ăn :
+
+[GET] localhost:3000/LoaiMonAn
+
++ Thêm 1 loại món ăn :
+
+[POST] localhost:3000/ThemLoaiMonAn
+
+Truyền vào JSON về loại món ăn cần thêm mới.Ví dụ :
+
+{
+   "TenLoaiMonAn" : "Banh ngot"
+}
+
++ Sửa 1 loại món ăn :
+
+[PUT] localhost:3000/SuaLoaiMonAn/[ID loại món ăn cần sửa]
+
+Truyền vào JSON về loại món ăn cần sửa lại mới thuộc ID trên.Ví dụ :
+
+{
+   "TenLoaiMonAn" : "Banh ngot bo duong"
+}
+
++ Xoá 1 loại món ăn :
+
+[DELETE] localhost:3000/XoaLoaiMonAn/[ID loại món ăn cần xoá]
+
+// API for MonAn........................................................................
+
++ Xuất các món ăn chứa cụm từ con cần tìm kiếm :
+
+[GET] localhost:3000/SearchMonAn/[chuỗi con - tên món ăn cần tìm kiếm]
+
++ Lấy danh sách món ăn thuộc một loại nào đó?
+
+[GET] localhost:3000/MonAn/[ID_LoaiMonAn]
+
++ Lấy danh sách tất cả món ăn :
+
+[GET] localhost:3000/MonAn
+
++ Lấy danh sách top 10 các món ăn mới nhất (admin hay ai đó vừa đăng gần đây) :
+
+[GET] localhost:3000/MonAnMoiNhat
+
++ Lấy danh sách các món ăn nổi bật :
+
+[GET] localhost:3000/MonAnNoiBat
+
++ Thêm 1 món ăn :
+
+[POST] localhost:3000/ThemMonAn
+
+Truyền vào JSON về món ăn cần thêm mới.Ví dụ :
+
+{
+    "TenMonAn": "Banh kem vi dau tay",
+    "NgayDang": "25/02/2022",
+    "NoiBat": true,
+    "ThongTin": "Sua tuoi tran chau duong den – mot cai ten quen thuoc dang gay bao phu song voi gioi tre. Tu khi bat dau lan rong tu Sai Gon, den nay mon tra sua co cai ten quen thuoc nhung mui vi cuc ky moi la nay van chua he ha nhiet.Mon do uong nay khong he co cac nguyen lieu cau ky ma chi la vi sua thom ngay, tran chau gion ngon ngam vi duong den ngot lim, tao nen mui vi thom beo ma khong he ngay.",
+    "CongThuc": "[Empty]",
+    "Anh": "https://jarvis.vn/wp-content/uploads/2019/05/sua-tuoi-tran-chau-duong-den.jpg",
+    "LoaiMonAn": "[ID loại món ăn]"
+}
+
++ Sửa 1 món ăn :
+
+[PUT] localhost:3000/SuaMonAn/[ID món ăn cần sửa]
+
+Truyền vào JSON về món ăn cần sửa lại mới thuộc ID trên.Ví dụ :
+
+{
+    "TenMonAn": "Banh my cha xuc xich",
+    "NgayDang": "25/02/2022",
+    "NoiBat": true,
+    "ThongTin": "Sua tuoi tran chau duong den – mot cai ten quen thuoc dang gay bao phu song voi gioi tre. Tu khi bat dau lan rong tu Sai Gon, den nay mon tra sua co cai ten quen thuoc nhung mui vi cuc ky moi la nay van chua he ha nhiet.Mon do uong nay khong he co cac nguyen lieu cau ky ma chi la vi sua thom ngay, tran chau gion ngon ngam vi duong den ngot lim, tao nen mui vi thom beo ma khong he ngay.",
+    "CongThuc": "[Empty]",
+    "Anh": "https://jarvis.vn/wp-content/uploads/2019/05/sua-tuoi-tran-chau-duong-den.jpg",
+    "LoaiMonAn": "[ID loại món ăn]"
+}
+
++ Xoá 1 món ăn :
+
+[DELETE] localhost:3000/XoaMonAn/[ID loại món ăn cần xoá]
+
+// API for UserLikeMonAn........................................................................
+
++ Lấy danh sách các món ăn người dùng đã like :
+
+[GET] localhost:3000/LikeMonAn/[UserName cần xem]
+
++ User khi like một món ăn :
+
+[POST] localhost:3000/InsertLikeMonAn
+
+Truyền vào JSON về món ăn mà User đã like.Ví dụ :
+
+{
+    "UserName": "admin_host",
+    "MonAn": "[ID món ăn User đã like]"
+}
+
++ User khi unlike một món ăn :
+
+[DELETE] localhost:3000/UnLikeMonAn
+
+Truyền vào JSON về món ăn mà User đã unlike.Ví dụ :
+
+{
+    "UserName": "admin_host",
+    "MonAn": "[ID món ăn User đã unlike]"
+}
+
+
+// API for UserSaveMonAn........................................................................
+
++ Lấy danh sách các món ăn người dùng đã save :
+
+[GET] localhost:3000/SaveMonAn/[UserName cần xem]
+
++ User khi save một món ăn :
+
+[POST] localhost:3000/InsertSaveMonAn
+
+Truyền vào JSON về món ăn mà User đã save.Ví dụ :
+
+{
+    "UserName": "admin_host",
+    "MonAn": "[ID món ăn User đã save]"
+}
+
++ User khi unsave một món ăn :
+
+[DELETE] localhost:3000/UnSaveMonAn
+
+Truyền vào JSON về món ăn mà User đã unsave.Ví dụ :
+
+{
+    "UserName": "admin_host",
+    "MonAn": "[ID món ăn User đã unsave]"
+}
+
+// API for Banner.....................................................................
+
++ Lấy danh sách banner của một món ăn :
+
+[GET] localhost:3000/Banner/[tên món ăn cần lấy banner của nó]
+
++ Thêm 1 banner cho một món ăn :
+
+[POST] localhost:3000/ThemBanner
+
+Truyền vào JSON về banner cần thêm.Ví dụ :
+
+{
+    "Anh": "[Photo banner is...]",
+    "MonAn": "[ID món ăn thuộc banner này]"
+
++ Sửa 1 banner cho một món ăn :
+
+[PUT] localhost:3000/SuaBanner/[ID banner cần sửa]
+
+Truyền vào JSON về banner cần sửa cho ID trên.Ví dụ :
+
+{
+    "Anh": "[Photo banner is empty...]",
+    "MonAn": "[ID món ăn thuộc banner này - có thể sửa khác]"
+}
+
++ Xoá 1 banner :
+
+[DELETE] localhost:3000/XoaBanner/[ID banner cần xoá]
