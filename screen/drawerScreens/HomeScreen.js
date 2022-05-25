@@ -12,6 +12,8 @@ import { ScrollView } from "react-native-gesture-handler";
 import { Searchbar } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native";
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const HomeScreen = ({navigation}) => {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -254,8 +256,38 @@ const HomeScreen = ({navigation}) => {
               />
               <Text style={styles.texts}>Bánh Phomai</Text>
             </View>
+            
           </ScrollView>
         </ScrollView>
+        <ActionButton buttonColor="rgba(88, 181, 255, 1)">
+              <ActionButton.Item
+                buttonColor="#9b59b6"
+                title="Add to Watch Later"
+                onPress={() => alert('Added to watch later')}>
+                <Icon
+                  name="md-eye"
+                  style={styles.actionButtonIcon}
+                />
+              </ActionButton.Item>
+              <ActionButton.Item
+                buttonColor="#3498db"
+                title="Add to Favourite"
+                onPress={() => alert('Added to favourite')}>
+                <Icon
+                  name="md-star"
+                  style={styles.actionButtonIcon}
+                />
+              </ActionButton.Item>
+              <ActionButton.Item
+                buttonColor="#1abc9c"
+                title="Share"
+                onPress={() => alert('Share Post')}>
+                <Icon
+                  name="md-share-alt"
+                  style={styles.actionButtonIcon}
+                />
+              </ActionButton.Item>
+            </ActionButton>
       </View>
     </SafeAreaView>
   );

@@ -71,7 +71,7 @@ const RegisterScreen = (props) => {
     }
     formBody = formBody.join("&");
 
-    fetch('http://172.20.10.5:3000/DangKy', {
+    fetch('http://192.168.1.166:3000/DangKy', {
       method: 'POST',
       body: formBody,
       headers: {
@@ -119,8 +119,7 @@ const RegisterScreen = (props) => {
         <TouchableOpacity
           style={styles.buttonStyle}
           activeOpacity={0.5}
-          onPress={() => props.navigation.navigate('Login')}
-        >
+          onPress={() => props.navigation.navigate('Login')}>
           <Text style={styles.buttonTextStyle}>Login Now</Text>
         </TouchableOpacity>
       </View>

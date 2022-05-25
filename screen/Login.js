@@ -31,7 +31,7 @@ export default Login = ({ navigation }) => {
       alert('Bạn hãy nhập mật khẩu');
       return;
     }
-
+    setLoading(true);
     let dataToSend = {
       UserName: userName,
       MatKhau: userpassword,
@@ -44,7 +44,7 @@ export default Login = ({ navigation }) => {
     }
     formBody = formBody.join("&");
 
-    fetch('http://172.20.10.5:3000/DangNhap', {
+    fetch('http://10.86.153.187:3000/DangNhap', {
       method: 'POST',
       body: formBody,
       headers: {
@@ -58,11 +58,12 @@ export default Login = ({ navigation }) => {
         setLoading(false);
         console.log(responseJson);
         // If server reponse message same as Data matched
-        if (responseJson.status === 'success') {
-         AsyncStorage.setItem('user_id', responseJson.data.userName);
-
+       
+        if (responseJson.data === true) {
+          AsyncStorage.setItem('user_id', responseJson.data.userName);
           console.log(responseJson.data.userName);
-          this.props.navigation.navigate('dangky');
+          navigation.replace('DrawerNavigationRoutes');
+          
         } else {
           setErrortext(responseJson.msg);
           console.log("Please check your id or password");
@@ -78,6 +79,7 @@ export default Login = ({ navigation }) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
+        <Loader loading={loading} />
         <Image style={styles.image} source={require('./assets/Logo.png')} />
         <StatusBar style="auto" />
         <TouchableOpacity>
@@ -129,11 +131,15 @@ export default Login = ({ navigation }) => {
                 {errortext}
               </Text>
             ) : null}
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={[styles.buttonContainer, styles.LoginButton]}
           onPress={handleSubmitPress => (navigation.navigate('Home'))}
             // navigation.navigate('Home');
-            >
+            > */}
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            activeOpacity={0.5}
+            onPress={handleSubmitPress}>
 
           {/* <TouchableOpacity
           style={[styles.buttonContainer, styles.LoginButton]}

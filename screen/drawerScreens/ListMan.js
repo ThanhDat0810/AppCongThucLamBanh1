@@ -20,7 +20,7 @@ const ListMan = ({navigation}) => {
   const [data ,setData] = useState("")
 
   const api = create({
-    baseURL: "http://10.86.152.191:3000/MonAn",
+    baseURL: "http://10.86.153.187:3000/MonAn",
   });
   var dataToSend = {
     _id : idmonan,
@@ -41,7 +41,7 @@ const ListMan = ({navigation}) => {
   const fetchData = async () => {
     
     api
-    .get("/622f3a265c3057036606e33f")
+    .get("/622f3a0a5c3057036606e33e")
     .then((response) => response.data)
     .then((data) => setData(data));
 };
@@ -51,7 +51,10 @@ useEffect(() => {
 }, [])
 
   const Item = ({ item, onPress, backgroundColor, textColor }) => (
-    <TouchableOpacity onPress={(setidmonan) => navigation.navigate('ChiTiet')} style={[styles.item, backgroundColor]}>
+    <TouchableOpacity onPress={(data) => {
+          
+          navigation.navigate('ChiTiet',data?.idmonan)}} 
+          style={[styles.item, backgroundColor]}>
       <View
         style={{
           height: 150,
@@ -76,9 +79,6 @@ useEffect(() => {
   const renderItem = ({ item }) => {
     const backgroundColor = item._id === selectedId ? "#C4C4C4" : "#E5E5E5";
     const color = item._id === selectedId ? "white" : "black";
-
-  
-
 
     return (
       <Item
