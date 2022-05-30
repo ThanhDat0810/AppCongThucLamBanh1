@@ -11,6 +11,10 @@ import RegisterScreen from './screen/register';
 import SplashScreen from "./screen/SplashScreen";
 import ListMan from "./screen/drawerScreens/ListMan"
 import Detail from "./screen/drawerScreens/Detail"
+import HomeScreenLive from "./screen/liveStream/liveStreamScreen"
+import PlayStream from './screen/liveStream/PlayStream';
+import StreamContent from './screen/liveStream/Live'
+
 const Stack = createNativeStackNavigator();
 const Auth = () => {
   return (
@@ -68,6 +72,14 @@ const App = () => {
                           title:'Bánh Mặn',
                           headerShown: true}} />
         <Stack.Screen name="ChiTiet" component={Detail}/>
+        {/* <Stack.Screen name="livestream" component= {BroadcastScreen}/> */}
+        <Stack.Screen
+          name="Homelive"
+          component={HomeScreenLive}
+          options={{ title: "iShow" }}
+        />
+        <Stack.Screen name="Play" component={PlayStream} />
+        <Stack.Screen name="Push" component={StreamContent} />
         {/* <Stack.Screen name='Home' component={HomeScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>

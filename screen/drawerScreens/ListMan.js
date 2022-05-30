@@ -20,7 +20,7 @@ const ListMan = ({navigation}) => {
   const [data ,setData] = useState("")
 
   const api = create({
-    baseURL: "http://10.86.153.187:3000/MonAn",
+    baseURL: "http://10.86.153.8:3000/MonAn",
   });
   var dataToSend = {
     _id : idmonan,

@@ -24,133 +24,187 @@ const HomeScreen = ({navigation}) => {
     // <ScrollView>
     <SafeAreaView style= {{flex: 1}}>
       <View style={styles.container}>
-        <View style={{ marginLeft: 10, margin: 10 }}>
-          <Text
-            style={{
-              fontSize: 26,
-              color: "#FFF",
-              fontWeight: "bold",
-            }}
-          >
-            WELCOME TO UBAKE !
-          </Text>
-        </View>
-        <Searchbar
-          placeholder="Tìm Công Thức Bánh..."
-          onChangeText={onChangeSearch}
-          value={searchQuery}
-          icon="magnify"
-          style={{
-            marginLeft: 12,
-            marginRight: 12,
-            marginTop: 10,
-            height: 30,
-            borderRadius: 20,
-            textSize: 16,
-          }}
-        />
         <ScrollView>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={true}
-            style={{ height: 170, marginTop: 20 }}
-          >
-            <View>
-              <Image
-                source={require("../assets/P2.png")}
-                style={{ marginLeft: 10, height: 150, borderRadius: 15 }}
-              />
+{/*------ View header and search--------------- */}
+          
+          
+          <View >
+            <View style = {styles.search}>
+              <View>
+                <Text
+                  style={{
+                    fontSize: 26,
+                    color: "#FFF",
+                    fontWeight: "bold",}}>
+                  WELCOME TO UBAKE !
+                </Text>
+              </View>
+                <Searchbar
+                  placeholder="Tìm Công Thức Bánh..."
+                  onChangeText={onChangeSearch}
+                  value={searchQuery}
+                  icon="magnify"
+                  style={{
+                    marginLeft: 12,
+                    marginRight: 12,
+                    marginTop: 10,
+                    
+                    height: 30,
+                    borderRadius: 20,
+                    textSize: 16,}}/>
             </View>
+{/*------ View header and search--------------- */}
+{/* ------------------------------- */}
+            <View style = {styles.twoScroll}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={true}
+                style={{ height: 170, marginTop: 20 }}>
+                <View>
+                  <Image
+                    source={require("../assets/P2.png")}
+                    style={{ marginLeft: 10, height: 150, borderRadius: 15 }}/>
+                </View>
 
-            <View>
-              <Image
-                source={require("../assets/P3.png")}
-                style={{ marginLeft: 10, height: 150, borderRadius: 15 }}
-              />
-            </View>
+                <View>
+                  <Image
+                    source={require("../assets/P3.png")}
+                    style={{ marginLeft: 10, height: 150, borderRadius: 15 }}/>
+                </View>
 
-            <View>
-              <Image
-                source={require("../assets/P4.png")}
+                <View>
+                  <Image
+                    source={require("../assets/P4.png")}
+                    style={{
+                      marginLeft: 10,
+                      height: 150,
+                      borderRadius: 15,
+                      marginRight: 20,
+                    }}/>
+                </View>
+              </ScrollView>
+{/* -------------------------------------------------------------- */}
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={true}
                 style={{
-                  marginLeft: 10,
-                  height: 150,
-                  borderRadius: 15,
-                  marginRight: 20,
-                }}
-              />
-            </View>
-          </ScrollView>
+                  height: 120,}}>
+              {/*---------------------- Bánh Mặn------------------- */}
+                    <TouchableOpacity style={styles.ListManButton} onPress={() => navigation.navigate('BanhMan')}>
+                      <View>
+                        <Image
+                          source={require("../assets/P5.png")}
+                          style={{ marginLeft: 10 }}
+                        />
 
+                        <Text style={styles.text}>Bánh Mặn</Text>
+                      </View>
+                      </TouchableOpacity>
+
+                {/*-----------------Bánh Ngọt-----------------------  */}
+                        <TouchableOpacity style={styles.ListNgotButton} onPress={() => navigation.navigate('BanhNgot')}>
+                        <View>
+                          <Image
+                            source={require("../assets/P6.png")}
+                            style={{ marginLeft: 10 }}
+                          />
+                          <Text style={styles.text}>Bánh Ngọt</Text>
+                        </View>
+                        </TouchableOpacity>
+                {/*--------------------Đặc Biệt---------------------------  */}
+                
+                        <TouchableOpacity style={styles.ListSpecialButton} onPress={() => navigation.navigate('DacBiet')}>
+                        <View>
+                          <Image
+                            source={require("../assets/P7.png")}
+                            style={{ marginLeft: 10 }}
+                          />
+                          <Text style={styles.text}>Đặc Biệt</Text>
+                        </View>
+                        </TouchableOpacity>
+                {/* --------------------------Đồ Uống---------------------- */}
+                      <TouchableOpacity style={styles.ListDrinkButton} onPress={() => navigation.navigate('DoUong')}>
+                        <View>
+                          <Image
+                            source={require("../assets/P8.png")}
+                            style={{ marginLeft: 10, marginRight: 10 }}/>
+                          <Text style={styles.text}>Đồ Uống</Text>
+                        </View>
+                      </TouchableOpacity>
+              </ScrollView>
+              </View>  
+              <View style={{ marginLeft: 10, marginTop: 20 }}>
+                  <Text
+                    style={{
+                      fontSize: 26,
+                      color: "#FFF",
+                      fontWeight: "bold",
+                    }}>
+                      Lastest Cake
+                  </Text>
+              </View>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={true}
-            style={{
-              height: 120,
-            }}
-          >
-          {/*---------------------- Bánh Mặn------------------- */}
-          <TouchableOpacity style={styles.ListManButton} onPress={() => navigation.navigate('BanhMan')}>
-            <View>
-              <Image
-                source={require("../assets/P5.png")}
-                style={{ marginLeft: 10 }}
-              />
+            style={{ height: 200, marginTop: 10 }}>
+              <View>
+                <Image
+                  source={require("../assets/P9.png")}
+                  style={{
+                    marginLeft: 10,
+                    height: 150,
+                    borderWidth: 3,
+                    borderStyle: "solid",
+                    borderRadius: 15,
+                    borderColor: "#000000",
+                  }}/>
+                <Text style={styles.texts}>Bánh Muffin</Text>
+              </View>
 
-              <Text style={styles.text}>Bánh Mặn</Text>
-            </View>
-            </TouchableOpacity>
+              <View>
+                <Image
+                  source={require("../assets/P10.png")}
+                  style={{
+                    marginLeft: 10,
+                    height: 150,
+                    borderRadius: 15,
+                    borderStyle: "solid",
+                    borderColor: "#000000",
+                    borderWidth: 3,
+                  }}/>
+                <Text style={styles.texts}>Bánh Flan</Text>
+              </View>
 
-            {/*-----------------Bánh Ngọt-----------------------  */}
-            <TouchableOpacity style={styles.ListNgotButton} onPress={() => navigation.navigate('BanhNgot')}>
-            <View>
-              <Image
-                source={require("../assets/P6.png")}
-                style={{ marginLeft: 10 }}
-              />
-              <Text style={styles.text}>Bánh Ngọt</Text>
-            </View>
-            </TouchableOpacity>
-            {/*--------------------Đặc Biệt---------------------------  */}
-            
-            <TouchableOpacity style={styles.ListSpecialButton} onPress={() => navigation.navigate('DacBiet')}>
-            <View>
-              <Image
-                source={require("../assets/P7.png")}
-                style={{ marginLeft: 10 }}
-              />
-              <Text style={styles.text}>Đặc Biệt</Text>
-            </View>
-            </TouchableOpacity>
-            {/* --------------------------Đồ Uống---------------------- */}
-            <TouchableOpacity style={styles.ListDrinkButton} onPress={() => navigation.navigate('DoUong')}>
-
-            <View>
-              <Image
-                source={require("../assets/P8.png")}
-                style={{ marginLeft: 10, marginRight: 10 }}
-              />
-              <Text style={styles.text}>Đồ Uống</Text>
-            </View>
-            </TouchableOpacity>
+              <View>
+                <Image
+                  source={require("../assets/P11.png")}
+                  style={{
+                    marginLeft: 10,
+                    height: 150,
+                    borderRadius: 15,
+                    borderStyle: "solid",
+                    marginRight: 20,
+                    borderColor: "#000000",
+                    borderWidth: 3,
+                  }}/>
+                <Text style={styles.texts}>Bánh Phomai</Text>
+              </View>
 
           </ScrollView>
-          <View style={{ marginLeft: 10, marginTop: 20 }}>
-            <Text
-              style={{
-                fontSize: 26,
-                color: "#FFF",
-                fontWeight: "bold",
-              }}
-            >
-              Lastest Cake
-            </Text>
-          </View>
+              <View style={{ marginLeft: 10, marginBottom: 10 }}>
+                <Text
+                  style={{
+                    fontSize: 26,
+                    color: "#FFF",
+                    fontWeight: "bold",
+                  }}>
+                  Most List Cake
+                </Text>
+              </View>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={true}
-            style={{ height: 200, marginTop: 10 }}
-          >
+            style={{ height: 200, marginTop: 10 }}>
             <View>
               <Image
                 source={require("../assets/P9.png")}
@@ -165,7 +219,6 @@ const HomeScreen = ({navigation}) => {
               />
               <Text style={styles.texts}>Bánh Muffin</Text>
             </View>
-
             <View>
               <Image
                 source={require("../assets/P10.png")}
@@ -180,7 +233,6 @@ const HomeScreen = ({navigation}) => {
               />
               <Text style={styles.texts}>Bánh Flan</Text>
             </View>
-
             <View>
               <Image
                 source={require("../assets/P11.png")}
@@ -196,74 +248,16 @@ const HomeScreen = ({navigation}) => {
               />
               <Text style={styles.texts}>Bánh Phomai</Text>
             </View>
-          </ScrollView>
-          <View style={{ marginLeft: 10, marginBottom: 10 }}>
-            <Text
-              style={{
-                fontSize: 26,
-                color: "#FFF",
-                fontWeight: "bold",
-              }}
-            >
-              Most List Cake
-            </Text>
-          </View>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={true}
-            style={{ height: 200, marginTop: 10 }}
-          >
-            <View>
-              <Image
-                source={require("../assets/P9.png")}
-                style={{
-                  marginLeft: 10,
-                  height: 150,
-                  borderWidth: 3,
-                  borderStyle: "solid",
-                  borderRadius: 15,
-                  borderColor: "#000000",
-                }}
-              />
-              <Text style={styles.texts}>Bánh Muffin</Text>
-            </View>
-            <View>
-              <Image
-                source={require("../assets/P10.png")}
-                style={{
-                  marginLeft: 10,
-                  height: 150,
-                  borderRadius: 15,
-                  borderStyle: "solid",
-                  borderColor: "#000000",
-                  borderWidth: 3,
-                }}
-              />
-              <Text style={styles.texts}>Bánh Flan</Text>
-            </View>
-            <View>
-              <Image
-                source={require("../assets/P11.png")}
-                style={{
-                  marginLeft: 10,
-                  height: 150,
-                  borderRadius: 15,
-                  borderStyle: "solid",
-                  marginRight: 20,
-                  borderColor: "#000000",
-                  borderWidth: 3,
-                }}
-              />
-              <Text style={styles.texts}>Bánh Phomai</Text>
-            </View>
             
           </ScrollView>
+        
+        </View>
         </ScrollView>
         <ActionButton buttonColor="rgba(88, 181, 255, 1)">
               <ActionButton.Item
                 buttonColor="#9b59b6"
                 title="Add to Watch Later"
-                onPress={() => alert('Added to watch later')}>
+                onPress={() => navigation.navigate('Homelive')}>
                 <Icon
                   name="md-eye"
                   style={styles.actionButtonIcon}
@@ -313,5 +307,12 @@ const styles = StyleSheet.create({
   ListManButton:{
     borderRadius: 1,
   },
+  twoScroll:{
+    flex: 1,
+    backgroundColor:"#ffffff"
+  },
+  search:{
+
+  }
 });
 export default HomeScreen;
