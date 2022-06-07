@@ -39,7 +39,7 @@ const HomeScreenLive = (props) => {
   const [stream, setStream] = useState("demo_295");
 
   useEffect(() => {
-    if (Platform.OS === "android") {
+    if (Platform.OS === "ios") {
       requestCameraPermission();
     }
   }, []);
@@ -111,3 +111,52 @@ const HomeScreenLive = (props) => {
   );
 };
 export default HomeScreenLive;
+
+
+
+// import React from 'react;
+// import { Dimensions, View } from "react-native";
+// import { NodeCameraView } from "react-native-nodemediaclient";
+
+// const { width, height } = Dimensions.get("window");
+
+// const config = {
+//   cameraConfig: {
+//     cameraId: 1,
+//     cameraFrontMirror: false
+//   },
+//   videoConfig: {
+//     preset: 4,
+//     bitrate: 2000000,
+//     profile: 2,
+//     fps: 30,
+//     videoFrontMirror: true,
+//   },
+//   audioConfig: {
+//     bitrate: 128000,
+//     profile: 1,
+//     samplerate: 44100,
+//   }
+// };
+
+// const BroadcastScreen = () => {
+//   const cameraViewRef = React.useRef(null);
+//   const streamKey = 'd5fca289-e2eb-c8e1-bde5-96f879fb430f';
+//   const url = `rtmp://global-live.mux.com:5222/app/${streamKey}`;
+
+//   return (
+//     <View style={{flex: 1}}>
+//       <NodeCameraView
+//         style={{width, height}}
+//         ref={cameraViewRef}
+//         outputUrl={url}
+//         camera={config.cameraConfig}
+//         audio={config.audioConfig}
+//         video={config.videoConfig}
+//         autopreview={true}
+//       />
+//     </View>
+//   );
+// };
+
+// export default BroadcastScreen;

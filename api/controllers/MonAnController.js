@@ -215,5 +215,33 @@ db.close();
 });
   },
 
-}
+  detail_monan: (req, res) => {
+      let ID =new require('mongodb').ObjectID(req.params.idMonAn);
 
+      var MongoClient = require('mongodb').MongoClient;
+      var url = "mongodb://127.0.0.1:27017/";
+
+      MongoClient.connect(url, function(err, db) {
+          if (err) throw err;
+          var dbo = db.db("CookingRecipe");
+          var myquery = { _id : ID }
+
+          dbo.collection("MonAn").find(myquery).toArray( function(err, result){
+            if (err) throw err;
+            console.log(result)
+            res.json(
+              {
+                message: "Chi tiet", 
+                data: true,
+                result
+              }
+            )
+            db.close();
+          });
+          // res.json(
+          //   { 
+          //     message: "Chi tiet", data: true
+          //   })
+        });
+      },
+}

@@ -58,6 +58,10 @@ module.exports = function(app) {
      //API lay danh sach mon an thuoc chuoi mon an can tim kiem (chuoi con gan giong)......................................
      app.route('/SearchMonAn/:search')
        .get(monan.ds_monanSearch);
+
+    app.route('/MonAn/:idMonAn')
+        .get(monan.detail_monan)
+        
   
      // API lay danh sach cac mon an thuoc mot loai mon an nao do.............................
      app.route('/MonAn/:loaimonan')
