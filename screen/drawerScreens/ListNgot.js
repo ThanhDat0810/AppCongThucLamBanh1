@@ -24,7 +24,7 @@ const ListNgot = ({navigation}) => {
     const [data ,setData] = useState("")
   
     const api = create({
-      baseURL: "http://172.20.10.5:3000/MonAn",
+      baseURL: "http://10.86.153.189:3000/MonAn",
     });
     var dataToSend = {
       _id : idmonan,

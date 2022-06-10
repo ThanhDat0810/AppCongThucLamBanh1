@@ -10,6 +10,9 @@ import DrawerNavigationRoutes from './screen/DrawerNavigationRoutes'
 import RegisterScreen from './screen/register';
 import SplashScreen from "./screen/SplashScreen";
 import ListMan from "./screen/drawerScreens/ListMan"
+import ListNgot from "./screen/drawerScreens/ListNgot"
+import ListSpecial from "./screen/drawerScreens/ListSpecial"
+import ListDrink from "./screen/drawerScreens/ListDrink"
 import Detail from "./screen/drawerScreens/Detail"
 import HomeScreenLive from "./screen/liveStream/liveStreamScreen"
 import PlayStream from './screen/liveStream/PlayStream';
@@ -69,15 +72,35 @@ const App = () => {
           name='BanhMan' 
           component={ListMan}
           screenOptions ={{
-                          title:'Bánh Mặn',
-                          headerShown: true}} />
+                title:'Bánh Mặn',
+                headerShown: true}} />
+
+        <Stack.Screen 
+          name='BanhNgot' 
+          component={ListNgot}
+          screenOptions ={{
+                title:'Bánh Ngọt',
+                headerShown: true}} />
+
+        <Stack.Screen 
+          name='DacBiet' 
+          component={ListSpecial}
+          screenOptions ={{
+                title:'Đặc Biệt',
+                headerShown: true}} />
         <Stack.Screen name="ChiTiet" component={Detail}/>
+
+        <Stack.Screen 
+          name='DoUong' 
+          component={ListDrink}
+          screenOptions ={{
+                title:'Đồ Uống',
+                headerShown: true}} />
         {/* <Stack.Screen name="livestream" component= {BroadcastScreen}/> */}
         <Stack.Screen
           name="Homelive"
           component={HomeScreenLive}
-          options={{ title: "iShow" }}
-        />
+          options={{ title: "iShow" }}/>
         <Stack.Screen name="Play" component={PlayStream} />
         <Stack.Screen name="Push" component={StreamContent} />
         {/* <Stack.Screen name='Home' component={HomeScreen} /> */}

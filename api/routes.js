@@ -59,7 +59,7 @@ module.exports = function(app) {
      app.route('/SearchMonAn/:search')
        .get(monan.ds_monanSearch);
 
-    app.route('/MonAn/:idMonAn')
+    app.route('/MonAn/detail/:idMonAn')
         .get(monan.detail_monan)
         
   

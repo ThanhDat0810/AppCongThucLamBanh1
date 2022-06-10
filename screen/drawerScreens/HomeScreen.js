@@ -34,6 +34,7 @@ const HomeScreen = ({navigation}) => {
                 <Text
                   style={{
                     fontSize: 26,
+                    
                     color: "#FFF",
                     fontWeight: "bold",}}>
                   WELCOME TO UBAKE !
@@ -48,7 +49,7 @@ const HomeScreen = ({navigation}) => {
                     marginLeft: 12,
                     marginRight: 12,
                     marginTop: 10,
-                    
+                    marginBottom:15,
                     height: 30,
                     borderRadius: 20,
                     textSize: 16,}}/>
@@ -84,54 +85,56 @@ const HomeScreen = ({navigation}) => {
                 </View>
               </ScrollView>
 {/* -------------------------------------------------------------- */}
-              <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={true}
-                style={{
-                  height: 120,}}>
-              {/*---------------------- Bánh Mặn------------------- */}
-                    <TouchableOpacity style={styles.ListManButton} onPress={() => navigation.navigate('BanhMan')}>
-                      <View>
-                        <Image
-                          source={require("../assets/P5.png")}
-                          style={{ marginLeft: 10 }}
-                        />
-
-                        <Text style={styles.text}>Bánh Mặn</Text>
-                      </View>
-                      </TouchableOpacity>
-
-                {/*-----------------Bánh Ngọt-----------------------  */}
-                        <TouchableOpacity style={styles.ListNgotButton} onPress={() => navigation.navigate('BanhNgot')}>
+              <View  style = {styles.LIST}>
+                <ScrollView
+                  horizontal
+                  showsHorizontalScrollIndicator={true}
+                  style={{
+                    height: 120,}}>
+                {/*---------------------- Bánh Mặn------------------- */}
+                      <TouchableOpacity style={styles.ListManButton} onPress={() => navigation.navigate('BanhMan')}>
                         <View>
                           <Image
-                            source={require("../assets/P6.png")}
+                            source={require("../assets/P5.png")}
                             style={{ marginLeft: 10 }}
                           />
-                          <Text style={styles.text}>Bánh Ngọt</Text>
+
+                          <Text style={styles.text}>Bánh Mặn</Text>
                         </View>
                         </TouchableOpacity>
-                {/*--------------------Đặc Biệt---------------------------  */}
-                
-                        <TouchableOpacity style={styles.ListSpecialButton} onPress={() => navigation.navigate('DacBiet')}>
-                        <View>
-                          <Image
-                            source={require("../assets/P7.png")}
-                            style={{ marginLeft: 10 }}
-                          />
-                          <Text style={styles.text}>Đặc Biệt</Text>
-                        </View>
+
+                  {/*-----------------Bánh Ngọt-----------------------  */}
+                          <TouchableOpacity style={styles.ListNgotButton} onPress={() => navigation.navigate('BanhNgot')}>
+                          <View>
+                            <Image
+                              source={require("../assets/P6.png")}
+                              style={{ marginLeft: 10 }}
+                            />
+                            <Text style={styles.text}>Bánh Ngọt</Text>
+                          </View>
+                          </TouchableOpacity>
+                  {/*--------------------Đặc Biệt---------------------------  */}
+                  
+                          <TouchableOpacity style={styles.ListSpecialButton} onPress={() => navigation.navigate('DacBiet')}>
+                          <View>
+                            <Image
+                              source={require("../assets/P7.png")}
+                              style={{ marginLeft: 10 }}
+                            />
+                            <Text style={styles.text}>Đặc Biệt</Text>
+                          </View>
+                          </TouchableOpacity>
+                  {/* --------------------------Đồ Uống---------------------- */}
+                        <TouchableOpacity style={styles.ListDrinkButton} onPress={() => navigation.navigate('DoUong')}>
+                          <View>
+                            <Image
+                              source={require("../assets/P8.png")}
+                              style={{ marginLeft: 10, marginRight: 10 }}/>
+                            <Text style={styles.text}>Đồ Uống</Text>
+                          </View>
                         </TouchableOpacity>
-                {/* --------------------------Đồ Uống---------------------- */}
-                      <TouchableOpacity style={styles.ListDrinkButton} onPress={() => navigation.navigate('DoUong')}>
-                        <View>
-                          <Image
-                            source={require("../assets/P8.png")}
-                            style={{ marginLeft: 10, marginRight: 10 }}/>
-                          <Text style={styles.text}>Đồ Uống</Text>
-                        </View>
-                      </TouchableOpacity>
-              </ScrollView>
+                </ScrollView>
+              </View>
               </View>  
               <View style={{ marginLeft: 10, marginTop: 20 }}>
                   <Text
@@ -313,6 +316,10 @@ const styles = StyleSheet.create({
   },
   search:{
 
+  },
+  LIST:{
+    borderRadius:50,
+    backgroundColor: "#d64b4b"
   }
 });
 export default HomeScreen;
