@@ -309,6 +309,8 @@ const styles = StyleSheet.create({
   },
   ListManButton:{
     borderRadius: 1,
+    bordersize: 0
+    
   },
   twoScroll:{
     flex: 1,
@@ -318,8 +320,10 @@ const styles = StyleSheet.create({
 
   },
   LIST:{
-    borderRadius:50,
-    backgroundColor: "#d64b4b"
+    paddingTop: 10,
+    borderRadius:1,
+    backgroundColor: "#d64b4b",
+    marginBottom: 10
   }
 });
 export default HomeScreen;

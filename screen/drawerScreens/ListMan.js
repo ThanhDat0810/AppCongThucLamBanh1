@@ -21,7 +21,7 @@ const ListMan = ({navigation}) => {
   const [data ,setData] = useState("")
 
   const api = create({
-    baseURL: "http://10.86.153.189:3000/MonAn",
+    baseURL: "http://192.168.1.40:3000/MonAn",
   });
   var dataToSend = {
     _id : idmonan,
@@ -42,7 +42,7 @@ const ListMan = ({navigation}) => {
   const fetchData = async () => {
     
     api
-    .get("/622f3a0a5c3057036606e33e")
+    .get("/622f3a265c3057036606e33f")
     .then((response) => response.data)
     .then((data) => setData(data));
 };

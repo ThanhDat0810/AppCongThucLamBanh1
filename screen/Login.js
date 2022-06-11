@@ -44,7 +44,7 @@ export default Login = ({ navigation }) => {
     }
     formBody = formBody.join("&");
 
-    fetch('http://10.86.153.189:3000/DangNhap', {
+    fetch('http://192.168.1.40:3000/DangNhap', {
       method: 'POST',
       body: formBody,
       headers: {

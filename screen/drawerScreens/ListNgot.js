@@ -24,7 +24,7 @@ const ListNgot = ({navigation}) => {
     const [data ,setData] = useState("")
   
     const api = create({
-      baseURL: "http://10.86.153.189:3000/MonAn",
+      baseURL: "http://192.168.1.40:3000/MonAn",
     });
     var dataToSend = {
       _id : idmonan,
@@ -55,7 +55,11 @@ const ListNgot = ({navigation}) => {
   }, [])
 
   const Item = ({ item, onPress, backgroundColor, textColor }) => (
-    <TouchableOpacity onPress={() => navigation.navigate('ChiTiet')} style={[styles.item, backgroundColor]}>
+    <TouchableOpacity onPress={() => {
+          
+      navigation.navigate('ChiTiet', {
+        id :item?._id
+      } )}}  style={[styles.item, backgroundColor]}>
       <View
         style={{
           height: 150,

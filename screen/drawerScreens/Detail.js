@@ -13,13 +13,15 @@ const Detail = (props) => {
   const [TenMonAn, setTenMonAn] = useState('');
   const [NgayDang, setNgayDangMonAn] = useState('');
   const [CongThuc, setCongThuc] = useState('');
+  const [NguyenLieu, setNguyenLieu] = useState('');
   const [data, setData] = useState({});
 
   var dataToSend = {
     _id: idmonan,
     TenMonAn: TenMonAn,
     NgayDang: NgayDang,
-    CongThuc: CongThuc
+    CongThuc: CongThuc,
+    NguyenLieu: NguyenLieu
 
   };
 
@@ -32,7 +34,7 @@ const Detail = (props) => {
   formBody = formBody.join("&");
 
   const api = create({
-    baseURL: "http://10.86.153.189:3000/MonAn/detail",
+    baseURL: "http://192.168.1.40:3000/MonAn/detail",
   }); 
 
   
@@ -40,8 +42,16 @@ const Detail = (props) => {
     
     api
     .get(`/${id}`)
-    .then((response) => response.data)
-    .then((data) => setData(data?.result));
+   
+    .then(async (data) => {
+      if(data){
+        console.log('first', data.data?.result)
+
+        await  setData(data.data?.result[0])
+
+      }
+    
+    });
 
 };
   
@@ -54,42 +64,33 @@ useEffect(() => {
 }, [props])
 
 
-console.log("data",data)
+console.log("data 12313",data?.TenMonAn)
 
   return (
-    <View>
-    <ScrollView>
+    <View style={{flex:1}}>
+    <ScrollView style={{flexGrow:1}}>
       <View style={styles.container}>
         <View>
             <View>
-              <Image style={[styles.image]}  source={{ uri: 'https://kenh14cdn.com/2017/2-1510316761218.jpeg', }}/>
+              <Image style={[styles.image]}  source={{ uri: data?.Anh }}/>
             </View>
             <View style={{alignItems:"center", backgroundColor: '#F1F1F1', padding: 10,}}>
-              <Text style={[styles.title]}>Tên món ăn: {TenMonAn}</Text>
-              <Text style={[styles.date]}>Ngày Đăng: {NgayDang}</Text>
+              <Text style={[styles.title]}>Tên món ăn: {data?.TenMonAn}</Text>
+              <Text style={[styles.date]}>Ngày Đăng: {data?.NgayDang}</Text>
             </View>
         </View>
             <View style={{marginTop: 10, backgroundColor: '#F1F1F1', padding: 10,}}>
-                <Text style={[styles.title]}>Nguyên liệu:</Text>
-                <Text style={[styles.text]}>"220gr bột mỳ",
-                "20gr bột ngô",
-                "5gr men nở",
-                "100gr thịt bò xay",
-                "180gr nước",
-                "10ml dầu ăn",
-                "Ngô ngọt",
-                "2 thìa sốt cà chua",
-                "Lá Oregano, tỏi, bột thìa là, hạt tiêu, ớt bột…",
-                "Cheese (phô mai)"</Text>
+                <Text style={[styles.title]}>Nguyên liệu: {data?.NguyenLieu}</Text>
+
             </View>
           <View style={{marginTop: 10, backgroundColor: '#F1F1F1', padding: 10,}}>
-            <Text style={[styles.title]}>Công thức: {CongThuc}</Text> 
+            <Text style={[styles.title]}>Công thức: {data?.CongThuc}</Text> 
         </View>
       </View>
       
+   
     </ScrollView>
-    
-      <ActionButton buttonColor="rgba(88, 181, 255, 1)">
+    <ActionButton buttonColor="rgba(88, 181, 255, 1)">
                 <ActionButton.Item
                   buttonColor="#9b59b6"
                   title="Add to Watch Later"
@@ -118,6 +119,7 @@ console.log("data",data)
                   />
                 </ActionButton.Item>
               </ActionButton>
+      
       </View>
   );
 }
@@ -125,7 +127,7 @@ console.log("data",data)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
+    // flexDirection: "column",
     marginTop: StatusBar.currentHeight || 0,
   },
   image: {

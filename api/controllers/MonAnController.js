@@ -228,7 +228,7 @@ db.close();
 
           dbo.collection("MonAn").find(myquery).toArray( function(err, result){
             if (err) throw err;
-            console.log(result)
+            console.log(result[0])
             res.json(
               {
                 message: "Chi tiet", 
