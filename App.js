@@ -89,6 +89,12 @@ const App = () => {
                 title:'Đặc Biệt',
                 headerShown: true}} />
         <Stack.Screen name="ChiTiet" component={Detail}/>
+        <Stack.Screen 
+              name="dangky" 
+              component={RegisterScreen}
+              options={{headerShown: false}}
+               />
+
 
         <Stack.Screen 
           name='DoUong' 

@@ -71,7 +71,7 @@ const RegisterScreen = (props) => {
     }
     formBody = formBody.join("&");
 
-    fetch('http://192.168.1.166:3000/DangKy', {
+    fetch('http://192.168.1.40:3000/DangKy', {
       method: 'POST',
       body: formBody,
       headers: {
@@ -85,7 +85,7 @@ const RegisterScreen = (props) => {
         setLoading(false);
         console.log(responseJson);
         // If server response message same as Data Matched
-        if (responseJson.status === "success") {
+        if (responseJson.data === true) {
           setIsRegistraionSuccess(true);
           console.log("Registration Successful. Please Login to proceed");
         } else {
@@ -119,14 +119,14 @@ const RegisterScreen = (props) => {
         <TouchableOpacity
           style={styles.buttonStyle}
           activeOpacity={0.5}
-          onPress={() => props.navigation.navigate('Login')}>
+          onPress={() => props.navigation.navigate('LoginScreen')}>
           <Text style={styles.buttonTextStyle}>Login Now</Text>
         </TouchableOpacity>
       </View>
     );
   }
   return (
-    <SafeAreaView>
+    <SafeAreaView style = {{flex: 1}}>
       <View style={{ backgroundColor: "#d64b4b" }}>
         <Loader loading={loading} />
         <ScrollView

@@ -25,11 +25,12 @@ module.exports = {
            console.log('Connection established to', url);
           
            //Lấy toàn bộ thông tin của table User
-          var collection = db.collection('User');
-
+         
+          var dbo = db.db("CookingRecipe");
+          var collection = dbo.collection('User');
 
           var query = { UserName : data.UserName };
-          db.collection("User").find(query).toArray(function(err, result) {
+          dbo.collection("User").find(query).toArray(function(err, result) {
               if (result[0] != null)
               {
                 res.json({message: "Dang ky that bai!", data : false});
