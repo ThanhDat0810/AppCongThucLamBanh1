@@ -21,7 +21,7 @@ module.exports = {
        dbo.collection("MonAn").find(query).toArray(function(err, result) {
          if (err) throw err;
          
-         res.json(result);
+         res.json(result[0]);
          db.close();
          });
         

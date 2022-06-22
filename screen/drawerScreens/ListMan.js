@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { create } from "apisauce"; 
 import { useEffect } from "react/cjs/react.development";
+import {BASE_URL} from "@env"
 
 
 const ListMan = ({navigation}) => {
@@ -21,7 +22,7 @@ const ListMan = ({navigation}) => {
   const [data ,setData] = useState("")
 
   const api = create({
-    baseURL: "http://192.168.1.40:3000/MonAn",
+    baseURL: "http://192.168.1.166:3000/MonAn",
   });
   var dataToSend = {
     _id : idmonan,
@@ -83,8 +84,8 @@ useEffect(() => {
   );
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item._id === selectedId ? "#C4C4C4" : "#E5E5E5";
-    const color = item._id === selectedId ? "white" : "black";
+    const backgroundColor = item._id === selectedId ? "#d95555" : "#d46363";
+    const color = item._id === selectedId ? "white" : "#ffffff";
 
     return (
       <Item
@@ -111,6 +112,7 @@ useEffect(() => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#d64b4b',
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {

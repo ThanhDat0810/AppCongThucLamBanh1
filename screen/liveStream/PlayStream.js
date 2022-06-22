@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { View, Button } from "react-native";
 import { NodePlayerView } from "react-native-nodemediaclient";
+import { NativeModules } from "react-native";
 
 const PlayStream = (props) => {
   const [playerRef, setPlayerRef] = useState(null);
+const {UIManager} = NativeModules;
 
   useEffect(() => {
     return () => {

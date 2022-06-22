@@ -5,6 +5,7 @@ import { create } from 'apisauce';
 import { useEffect } from "react/cjs/react.development";
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {BASE_URL} from "@env";
 //View
 const Detail = (props) => {
 
@@ -34,7 +35,7 @@ const Detail = (props) => {
   formBody = formBody.join("&");
 
   const api = create({
-    baseURL: "http://192.168.1.40:3000/MonAn/detail",
+    baseURL: "http://192.168.1.166:3000/MonAn/detail",
   }); 
 
   
@@ -67,30 +68,32 @@ useEffect(() => {
 console.log("data 12313",data?.TenMonAn)
 
   return (
-    <View style={{flex:1}}>
-    <ScrollView style={{flexGrow:1}}>
+    <View style={{flex:1,
+        backgroundColor: '#d64b4b',
+}}>
+    <ScrollView style={{flexGrow:1, }}>
       <View style={styles.container}>
         <View>
             <View>
               <Image style={[styles.image]}  source={{ uri: data?.Anh }}/>
             </View>
-            <View style={{alignItems:"center", backgroundColor: '#F1F1F1', padding: 10,}}>
+            <View style={{alignItems:"center", backgroundColor: '#d46363', padding: 10,}}>
               <Text style={[styles.title]}>Tên món ăn: {data?.TenMonAn}</Text>
               <Text style={[styles.date]}>Ngày Đăng: {data?.NgayDang}</Text>
             </View>
         </View>
-            <View style={{marginTop: 10, backgroundColor: '#F1F1F1', padding: 10,}}>
+            <View style={{marginTop: 10, backgroundColor: '#d46363', padding: 10,}}>
                 <Text style={[styles.title]}>Nguyên liệu: {data?.NguyenLieu}</Text>
 
             </View>
-          <View style={{marginTop: 10, backgroundColor: '#F1F1F1', padding: 10,}}>
+          <View style={{marginTop: 10, backgroundColor: '#d46363', padding: 10,}}>
             <Text style={[styles.title]}>Công thức: {data?.CongThuc}</Text> 
         </View>
       </View>
       
    
     </ScrollView>
-    <ActionButton buttonColor="rgba(88, 181, 255, 1)">
+    <ActionButton buttonColor="rgba(219, 123, 123, 1)">
                 <ActionButton.Item
                   buttonColor="#9b59b6"
                   title="Add to Watch Later"

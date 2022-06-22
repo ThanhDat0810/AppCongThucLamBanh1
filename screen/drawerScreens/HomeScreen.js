@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {
   TouchableOpacity,
   Text,
@@ -14,12 +14,16 @@ import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native";
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import {BASE_URL} from "@env";
 const HomeScreen = ({navigation}) => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const onChangeSearch = (query) => setSearchQuery(query);
-
+  // async function search(ten){
+  //   const res = await fetch({BASE_URL}+'/SearchMonAn/'+ten);
+  //   const body = await res.json();
+  //   retrun body.map((result: searchQuery) => )
+  
   return (
     // <ScrollView>
     <SafeAreaView style= {{flex: 1}}>
@@ -42,8 +46,7 @@ const HomeScreen = ({navigation}) => {
               </View>
                 <Searchbar
                   placeholder="Tìm Công Thức Bánh..."
-                  onChangeText={onChangeSearch}
-                  value={searchQuery}
+                  onChangeText={() =>{}}value={searchQuery}
                   icon="magnify"
                   style={{
                     marginLeft: 12,
@@ -256,7 +259,7 @@ const HomeScreen = ({navigation}) => {
         
         </View>
         </ScrollView>
-        <ActionButton buttonColor="rgba(88, 181, 255, 1)">
+        <ActionButton buttonColor="rgba(219, 123, 123, 1)">
               <ActionButton.Item
                 buttonColor="#9b59b6"
                 title="Add to Watch Later"

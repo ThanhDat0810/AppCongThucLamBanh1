@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { response } from "express";
 import { Keyboard } from 'react-native';
 import Loader from './Components/loader';
+import {BASE_URL} from '@env'
 export default Login = ({ navigation }) => {
   const [userName, setUserName] = useState('');
   const [userpassword, setuserPassword] = useState('');
@@ -43,8 +44,8 @@ export default Login = ({ navigation }) => {
       formBody.push(encodedKey + '=' + encodedValue);
     }
     formBody = formBody.join("&");
-
-    fetch('http://192.168.1.40:3000/DangNhap', {
+console.log(BASE_URL)
+    fetch(BASE_URL +'/DangNhap', {
       method: 'POST',
       body: formBody,
       headers: {
@@ -77,7 +78,7 @@ export default Login = ({ navigation }) => {
   };
   
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex : 1}}>
       <View style={styles.container}>
         <Loader loading={loading} />
         <Image style={styles.image} source={require('./assets/Logo.png')} />
@@ -137,7 +138,7 @@ export default Login = ({ navigation }) => {
             // navigation.navigate('Home');
             > */}
           <TouchableOpacity
-            style={styles.buttonStyle}
+            style={styles.LoginButton}
             activeOpacity={0.5}
             onPress={handleSubmitPress}>
 
@@ -182,6 +183,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#d64b4b",
     alignItems: "center",
     justifyContent: "center",
+    flex : 1
   },
 
   image: {
@@ -270,6 +272,7 @@ const styles = StyleSheet.create({
   twitter: {
     width: 40,
     height: 40,
+    
     // marginRight:100,
     // marginBottom:10,
     // marginTop:10,
@@ -325,4 +328,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 14,
   },
+  buttonStyle:{
+    backgroundColor: "#b41616",
+    width: "50%",
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    borderStyle: "solid",
+    borderColor: "#000000",
+    borderWidth: 2,
+    borderRadius: 8,
+    marginBottom: 20,
+  }
 });

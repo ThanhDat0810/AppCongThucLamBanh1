@@ -41,7 +41,7 @@ MongoClient.connect(url, function(err, db) {
 
   var collection = dbo.collection('UserLikeMonAn');
 
-  dbo.collection('MonAn').find({TenMonAn : data.MonAn.toString()}).toArray(function(err, result) {
+  dbo.collection('MonAn').find({TenMonAn : data.MonAn}).toArray(function(err, result) {
     if (err) throw err;
 
     //data.MonAn = result[0]._id.toString();

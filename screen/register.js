@@ -71,7 +71,7 @@ const RegisterScreen = (props) => {
     }
     formBody = formBody.join("&");
 
-    fetch('http://192.168.1.40:3000/DangKy', {
+    fetch('http://192.168.1.166:3000/DangKy', {
       method: 'POST',
       body: formBody,
       headers: {
@@ -127,10 +127,10 @@ const RegisterScreen = (props) => {
   }
   return (
     <SafeAreaView style = {{flex: 1}}>
-      <View style={{ backgroundColor: "#d64b4b" }}>
+      <View style={{ backgroundColor: "#d64b4b", flex: 1 }}>
         <Loader loading={loading} />
         <ScrollView
-          keyboardShouldPersistTaps="handled"
+          keyboardShouldPersistTaps="handled"D
           contentContainerStyle={{
             justifyContent: "center",
             alignContent: "center",
